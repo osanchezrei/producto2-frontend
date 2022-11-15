@@ -1,0 +1,52 @@
+<div class="detalle">
+  <h3>Nombre jugador</h3>
+
+  <img
+    src="/assets/img/spacejam.jpeg"
+    class="w-100"
+  >
+
+  <div class="d-flex pt-2">
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>Edad</div>
+            <div class="fw-semibold">{{jugador.edad}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>Altura</div>
+            <div class="fw-semibold">{{jugador.altura}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>Puntos</div>
+            <div class="fw-semibold">{{jugador.puntos}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>Posición</div>
+            <div class="fw-semibold">{{jugador.posicion}}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="p-2">
+      <p class="pl-2">
+        {{jugador.descripcion}}
+      </p>
+    </div>
+  </div>
+
+  <div class="pt-4">
+    <app-reproductor
+      [audio]="jugador.audio"
+      [video]="jugador.video"
+    ></app-reproductor>
+  </div>
+</div>

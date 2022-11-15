@@ -1,0 +1,31 @@
+<div>
+  <b *ngIf="audio">
+    Audio source: {{audio}}
+  </b>
+</div>
+<audio *ngIf="audio" #audioElement src={{audio}}></audio>
+
+<div>
+  <b *ngIf="video">
+    Video source: {{audio}}
+  </b>
+</div>
+<video *ngIf="video" #videoElement src={{video}}></video>
+
+<div>
+  <button type="button" class="btn btn-light" (click)="play()">
+    Play
+  </button>
+  <button type="button" class="btn btn-light" (click)="pause()">
+    Pause
+  </button>
+  <button type="button" class="btn btn-light" (click)="mute()">
+    Mute
+  </button>
+  <button type="button" class="btn btn-light" (click)="unMute()">
+    Unmute
+  </button>
+  <button type="button" class="btn btn-light" (click)="backTo0()">
+    Back to 0
+  </button>
+</div>
