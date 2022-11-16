@@ -10,7 +10,10 @@ import { ReproductorComponent } from './components/reproductor/reproductor.compo
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
-
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment';
+import { JugadorService } from './services/jugador.service';
 
 @NgModule({
   declarations: [
@@ -26,8 +29,12 @@ import { FilterPipe } from './pipes/filter.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [
+    JugadorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
