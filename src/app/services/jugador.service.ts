@@ -22,7 +22,7 @@ export class JugadorService {
   private jugadoresCollection: CollectionReference<DocumentData>;
 
   constructor(private readonly firestore: Firestore) {
-    this.jugadoresCollection = collection(this.firestore, 'pokemon');
+    this.jugadoresCollection = collection(this.firestore, 'jugadores');
   }
   //Obtener todos los jugadores
   getAll(): Observable<Jugador[]> {

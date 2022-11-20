@@ -1,5 +1,5 @@
 export interface Jugador {
-    $key?: string; 
+    $key: string; 
     nombre?: string;
     descripcion?: string;
     posicion?: string;
@@ -8,4 +8,5 @@ export interface Jugador {
     puntos?: number;
     audio?: string;
     video?: string;
+    img?: string;
 }

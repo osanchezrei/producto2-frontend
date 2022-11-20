@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Jugador } from 'src/data/jugadores';
+import { Jugador } from 'src/app/interfaces/Jugador';
 
 @Component({
   selector: 'app-detalle',

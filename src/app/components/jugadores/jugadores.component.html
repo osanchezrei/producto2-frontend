@@ -17,7 +17,7 @@
     <ol class="list-group">
       <li
         class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"
-        *ngFor="let jugador of jugadores | filter:playerFilter"
+        *ngFor="let jugador of jugador$ | filter:playerFilter"
         (click)="onSelect(jugador)"
         [ngClass]="{'active': selectedJugador == jugador}"
       >
@@ -101,6 +101,7 @@
           <button
             type="submit"
             class="btn btn-primary"
+            (click)="onCreate()"
           >
             Guardar
           </button>
