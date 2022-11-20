@@ -1,5 +1,6 @@
 export class Jugador {
   id!: number;
+  imagenUrl?: string;
   nombre!: string;
   altura!: number;
   edad!: number;

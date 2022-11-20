@@ -44,7 +44,7 @@
 
   </div>
 
-  <div class="btn btn-primary mt-2">
+  <div class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#editar-formulario">
     <i class="bi bi-pencil-square"></i> Editar
   </div>
 
@@ -55,5 +55,68 @@
       [audio]="jugador.audio"
       [video]="jugador.video"
     ></app-reproductor>
+  </div>
+</div>
+
+
+
+
+<div class="modal" tabindex="-1" id="editar-formulario">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar jugador</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="d-flex">
+            <div class="m-2">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [defaultValue]="jugador.nombre">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [defaultValue]="jugador.edad">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Altura</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [defaultValue]="jugador.altura">
+              </div>
+            </div>
+            <div class="m-2">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Puntos</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [defaultValue]="jugador.puntos">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Posicion</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [defaultValue]="jugador.posicion">
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Audio / Video url</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [defaultValue]="jugador.video">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Imagen url</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [defaultValue]="jugador.imagenUrl">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [defaultValue]="jugador.descripcion"></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
