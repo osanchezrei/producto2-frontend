@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Jugador, JUGADORES } from '../../../data/jugadores';
-
+import { JugadorService } from 'src\app\services\jugador.service.ts'
 @Component({
   selector: 'app-jugadores',
   templateUrl: './jugadores.component.html',
@@ -14,5 +14,9 @@ export class JugadoresComponent {
 
   onSelect(jugador: Jugador){
     this.selectedJugador = jugador;
+  }
+
+  onDelete(jugador: Jugador){
+
   }
 }
