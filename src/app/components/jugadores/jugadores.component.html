@@ -21,13 +21,24 @@
         (click)="onSelect(jugador)"
         [ngClass]="{'active': selectedJugador == jugador}"
       >
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">{{jugador.nombre}}</div>
+        <div class="ms-2 me-auto">
+          <div>
+            <span class="fw-bold">
+              {{jugador.nombre}}
+            </span>
+          </div>
           Altura: {{jugador.altura}} | Posición: {{jugador.posicion}}
         </div>
-        <span class="badge bg-primary rounded-pill">{{jugador.id}}</span>
+        <div>
+          <span class="badge bg-primary rounded-pill">{{jugador.id}}</span>
+          {{' '}}
+          <button type="button" class="btn btn-danger btn-sm">🗑</button>
+        </div>
       </li>
     </ol>
+    <div class="btn btn-success mt-3">
+      ➕ Añadir jugador
+    </div>
   </div>
   <div class="p-2">
     <app-detalle *ngIf="selectedJugador" [jugador]="selectedJugador"></app-detalle>
