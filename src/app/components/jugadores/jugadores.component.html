@@ -48,7 +48,11 @@
 </div>
 <router-outlet></router-outlet>
 
-
+<ul>
+  <li *ngFor="let item of jugadoresList$ | async">
+    {{ item.name }}
+  </li>
+</ul>
 
 <div class="modal" tabindex="-1" id="anadir-formulario">
   <div class="modal-dialog">

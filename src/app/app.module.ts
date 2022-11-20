@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { Firestore, FirestoreModule, getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EquiposComponent } from './components/equipos/equipos.component';
@@ -14,6 +17,7 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { JugadorService } from './services/jugador.service';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -29,11 +33,17 @@ import { JugadorService } from './services/jugador.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    // AngularFireModule.initializeApp(environment.firebase),
+    // FirestoreModule,
     AngularFireDatabaseModule,
   ],
   providers: [
-    JugadorService
+    // Firestore,
+    // FirestoreModule,
+    // AngularFirestore,
+    JugadorService,
   ],
   bootstrap: [AppComponent]
 })
