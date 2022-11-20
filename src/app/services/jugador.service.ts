@@ -1,6 +1,17 @@
 import { Jugador } from './../interfaces/Jugador';
 import { Injectable } from '@angular/core';
-import { AngularFireList, AngularFireDatabase } from '@angular/fire/compat/database';
+
+import {
+  CollectionReference,
+  DocumentData,
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from '@firebase/firestore';
+import { Firestore, collectionData, docData } from '@angular/fire/firestore';
+
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,40 +19,39 @@ import { Observable } from 'rxjs';
 })
 export class JugadorService {
 
-  private jugadoresDB: AngularFireList<Jugador>;
+  private jugadoresCollection: CollectionReference<DocumentData>;
 
-  constructor(private db: AngularFireDatabase) {
-    this.jugadoresDB = this.db.list('/jugadores', (ref) =>
-      ref.orderByChild('nombre')
-    );
+  constructor(private readonly firestore: Firestore) {
+    this.jugadoresCollection = collection(this.firestore, 'pokemon');
   }
-
-  getJugadores(): Observable<Jugador[]> {
-    return this.
+  //Obtener todos los jugadores
+  getAll(): Observable<Jugador[]> {
+    return collectionData(this.jugadoresCollection, {
+      idField: 'id',
+    }) as Observable<Jugador[]>;
+  }
+  //Obtener solo uno
+  get(id: string) {
+    const jugadoresDocumentReference = doc(this.firestore, `Jugadores/${id}`);
+    return docData(jugadoresDocumentReference, { idField: 'id' });
   }
 
   //Metodo para crear un nuevo jugador en la DB
-  addJugador(jugador: Jugador) {
- 
-    return this.jugadoresDB.push(jugador);
+  add(jugador: Jugador) {
+    return addDoc(this.jugadoresCollection, jugador);
   }
 
   //Borrar un Jugador de la DB
-  deleteJugador(id: string) {
-    //? Que base de datos afectaremos? Jugadores.
-    //? El id del jugador que deseamos eliminar.
-    this.db.list('/jugadores').remove(id);
+  delete(id: string) {
+    const jugadoresDocumentReference = doc(this.firestore, `Jugadores/${id}`);
+    return deleteDoc(jugadoresDocumentReference);
   }
 
-  //Editar un Jugador
-  editJugador(newJugadorData) {
-    //? Salvamos el Key.
-    //? Eliminamos el registro anterior con el Key.
-    //? Nuevamente asignamos a ese registro la nueva información en la base de datos.
-    //? FireBase no acepta que ya se contenga una Key, por eso se hizo la Key opcional.
-    //? Al borrar o actualizar daria problema sino fuera opcional.
-    const $key = newJugadorData.$key;
-    delete newJugadorData.$key;
-    this.db.list('/jugadores').update($key, newJugadorData);
+  update(jugador: Jugador) {
+    const jugadoresDocumentReference = doc(
+      this.firestore,
+      `Jugadores/${jugador.$key}`
+    );
+    return updateDoc(jugadoresDocumentReference, { ...jugador });
   }
 }
