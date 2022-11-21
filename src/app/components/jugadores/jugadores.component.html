@@ -17,7 +17,7 @@
     <ol class="list-group">
       <li
         class="d-flex justify-content-between align-items-start"
-        *ngFor="let jugador of jugadoresList$ | async"
+        *ngFor="let jugador of jugadoresList$ | async | filter:playerFilter"
         >
 
         <ul class="list-group list-group-horizontal d-flex m-1">
