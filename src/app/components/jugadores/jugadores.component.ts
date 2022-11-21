@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Jugador, JUGADORES } from '../../../data/jugadores';
+import { JUGADORES } from '../../../data/jugadores';
+import { Jugador } from '../../interfaces/Jugador';
 import { JugadorService } from '../../services/jugador.service';
 
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
@@ -14,7 +15,7 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 export class JugadoresComponent implements OnInit{
 
-  jugador$!: Observable<Jugador[]>;
+  jugador$ = JUGADORES;
   playerFilter = '';
   selectedJugador!: Jugador;
 

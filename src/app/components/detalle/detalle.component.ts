@@ -7,5 +7,5 @@ import { Jugador } from 'src/app/interfaces/Jugador';
   styleUrls: ['./detalle.component.css']
 })
 export class DetalleComponent{
-  @Input() jugador!: Jugador;
+  @Input() jugador?: Jugador;
 }
