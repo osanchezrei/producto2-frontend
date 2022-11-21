@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { filter, Observable, tap } from 'rxjs';
-import { Jugador } from 'src/app/interfaces/Jugador';
-import { JugadorService } from 'src/app/services/jugador.service'
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Jugador, JUGADORES } from '../../../data/jugadores';
+import { JugadorService } from '../../services/jugador.service';
+
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-jugadores',
@@ -15,20 +18,19 @@ export class JugadoresComponent implements OnInit{
   playerFilter = '';
   selectedJugador!: Jugador;
 
-  constructor(private readonly jugadoresService: JugadorService){}
-
-  ngOnInit(): void {
-    this.jugador$ = this.jugadoresService.getAll();
-  }
-
   onSelect(jugador: Jugador){
     this.selectedJugador = jugador;
   }
   onDelete(jugador: Jugador){
-    this.jugadoresService.delete(this.selectedJugador.$key);
+    // this.jugadoresService.delete(this.selectedJugador.$key);
   }
   onCreate(){
+  }
 
-    
+  jugadoresList$?: Observable<any[]>;
+  constructor(private readonly jugadoresService: JugadorService) {}
+
+  ngOnInit(): void {
+    this.jugadoresList$ = this.jugadoresService.getAll();
   }
 }
