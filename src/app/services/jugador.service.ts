@@ -13,6 +13,7 @@ import {
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs';
+import { STRING_TYPE } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -42,16 +43,17 @@ export class JugadorService {
   }
 
   //Borrar un Jugador de la DB
-  delete(id: string) {
-    const jugadoresDocumentReference = doc(this.firestore, `Jugadores/${id}`);
-    return deleteDoc(jugadoresDocumentReference);
+  delete(id: string | number | null | undefined) {
+      const jugadoresDocumentReference = doc(this.firestore, `Jugadores/${id}`);
+      return deleteDoc(jugadoresDocumentReference);
   }
 
-  update(jugador: Jugador) {
+  update(newJugadorData: Jugador, oldJugadorData: Jugador) {
     const jugadoresDocumentReference = doc(
       this.firestore,
-      `Jugadores/${jugador.$key}`
+      `Jugadores/${oldJugadorData.id}`
     );
-    return updateDoc(jugadoresDocumentReference, { ...jugador });
+    console.log(oldJugadorData.id);
+    return updateDoc(jugadoresDocumentReference, { ...newJugadorData });
   }
 }

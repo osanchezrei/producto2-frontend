@@ -56,50 +56,53 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="newJugadorForm" (ngSubmit)="onSubmit()">
           <div class="d-flex">
             <div class="m-2">
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input formControlName="nombre" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Edad</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="edad" class="form-label">Edad</label>
+                <input formControlName="edad" type="number" class="form-control" id="edad" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Altura</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="altura" class="form-label">Altura</label>
+                <input formControlName="altura" type="number" class="form-control" id="altura" aria-describedby="emailHelp">
               </div>
             </div>
             <div class="m-2">
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Puntos</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="puntos" class="form-label">Puntos</label>
+                <input formControlName="puntos" type="number" class="form-control" id="puntos" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Posicion</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="posicion" class="form-label">Posicion</label>
+                <input formControlName="posicion" type="text" class="form-control" id="posicion" aria-describedby="emailHelp">
               </div>
             </div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Audio / Video url</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="audio" class="form-label">Audio url</label>
+            <input formControlName="audio" type="text" class="form-control" id="audio" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Imagen url</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="video" class="form-label">Video url</label>
+            <input formControlName="video" type="text" class="form-control" id="audio" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="img" class="form-label">Imagen url</label>
+            <input formControlName="img" type="text" class="form-control" id="img" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea formControlName="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
           </div>
 
           <button
             type="submit"
             class="btn btn-primary"
-            (click)="onCreate()"
           >
             Guardar
           </button>

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { JUGADORES } from '../../../data/jugadores';
 import { Jugador } from '../../interfaces/Jugador';
 import { JugadorService } from '../../services/jugador.service';
-
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -18,16 +16,32 @@ export class JugadoresComponent implements OnInit{
   selectedJugador!: Jugador;
   jugadoresList$?: Observable<any[]>;
 
-  constructor(private readonly jugadoresService: JugadorService) {}
+  newJugadorForm = this.formBuilder.nonNullable.group({
+    nombre: '',
+    descripcion: '',
+    posicion: '',
+    edad: 0,
+    altura: 0,
+    puntos: 0,
+    audio: '',
+    video: '',
+    img: ''
+  });
+
+  constructor(
+      private readonly jugadoresService: JugadorService,
+      private formBuilder: FormBuilder,
+    ){}
 
   onSelect(jugador: Jugador){
     this.selectedJugador = jugador;
   }
   onDelete(jugador: Jugador){
-    console.log('./onDelete', jugador);
-    // this.jugadoresService.delete(this.selectedJugador.$key);
+    this.jugadoresService.delete(jugador.id);
   }
-  onCreate(){
+  onSubmit(): void{
+    this.jugadoresService.add(this.newJugadorForm.value);
+    this.newJugadorForm.reset();
   }
 
   ngOnInit(): void {

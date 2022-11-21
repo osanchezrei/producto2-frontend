@@ -1,6 +1,5 @@
 export interface Jugador {
-    id?: string | number | undefined;
-    $key?: string | undefined;
+    id?: string;
     nombre?: string;
     descripcion?: string;
     posicion?: string;
