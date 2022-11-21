@@ -14,22 +14,21 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 })
 
 export class JugadoresComponent implements OnInit{
-
-  jugador$ = JUGADORES;
   playerFilter = '';
   selectedJugador!: Jugador;
+  jugadoresList$?: Observable<any[]>;
+
+  constructor(private readonly jugadoresService: JugadorService) {}
 
   onSelect(jugador: Jugador){
     this.selectedJugador = jugador;
   }
   onDelete(jugador: Jugador){
+    console.log('./onDelete', jugador);
     // this.jugadoresService.delete(this.selectedJugador.$key);
   }
   onCreate(){
   }
-
-  jugadoresList$?: Observable<any[]>;
-  constructor(private readonly jugadoresService: JugadorService) {}
 
   ngOnInit(): void {
     this.jugadoresList$ = this.jugadoresService.getAll();
