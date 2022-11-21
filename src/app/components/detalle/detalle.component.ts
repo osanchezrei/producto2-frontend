@@ -9,11 +9,11 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './detalle.component.html',
   styleUrls: ['./detalle.component.css']
 })
-export class DetalleComponent{
+export class DetalleComponent implements OnInit{
   @Input() jugador?: Jugador;
 
   newJugadorForm = this.formBuilder.nonNullable.group({
-    nombre: this.jugador?.nombre,
+    nombre: '',
     descripcion: '',
     posicion: '',
     edad: 0,
@@ -30,10 +30,14 @@ export class DetalleComponent{
   ){
     console.log(this.jugador?.id)
   }
-  
+
   onSubmit(): void{
     this.jugadoresService.update(this.newJugadorForm.value, this.jugador!);
-    console.log(this.jugador?.nombre);
-    //this.newJugadorForm.reset();
+  }
+
+  ngOnInit(): void {
+    this.newJugadorForm.patchValue({
+      ...this.jugador
+    });
   }
 }
