@@ -24,6 +24,7 @@ export class JugadoresComponent implements OnInit{
     this.selectedJugador = jugador;
   }
   onDelete(jugador: Jugador){
+    console.log('./onDelete', jugador);
     // this.jugadoresService.delete(this.selectedJugador.$key);
   }
   onCreate(){
