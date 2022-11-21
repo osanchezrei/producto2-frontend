@@ -16,26 +16,36 @@
   <div class="p-1">
     <ol class="list-group">
       <li
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"
+        class="d-flex justify-content-between align-items-start"
         *ngFor="let jugador of jugadoresList$ | async"
-        (click)="onSelect(jugador)"
-        [ngClass]="{'active': selectedJugador == jugador}"
-      >
-        <div class="ms-2 me-auto">
-          <div>
-            <span class="fw-bold">
-              {{jugador.nombre}}
-            </span>
-          </div>
-          <i class="bi bi-ladder"></i> {{jugador.altura}} | <i class="bi bi-arrow-down-right-square"></i> {{jugador.posicion}}
-        </div>
-        <div>
-          <span class="badge bg-primary rounded-pill jugador-id">{{jugador.id}}</span>
-          {{' '}}
-          <button (click)="onDelete(jugador)" type="button" class="btn btn-danger btn-sm">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
+        >
+
+        <ul class="list-group list-group-horizontal d-flex m-1">
+          <li
+            class="list-group-item d-flex flex-grow-1"
+            (click)="onSelect(jugador)"
+            [ngClass]="{'active': selectedJugador == jugador}"
+          >
+            <div class="ms-2 me-auto">
+              <div>
+                <span class="fw-bold">
+                  {{jugador.nombre}}
+                </span>
+              </div>
+              <i class="bi bi-ladder"></i> {{jugador.altura}} | <i class="bi bi-arrow-down-right-square"></i> {{jugador.posicion}}
+            </div>
+            <div>
+              <span class="badge bg-secondary rounded-pill jugador-id">{{jugador.id}}</span>
+              {{' '}}
+            </div>
+          </li>
+          <li class="list-group-item">
+            <button (click)="onDelete(jugador)" type="button" class="btn btn-danger btn-sm">
+              <i class="bi bi-trash"></i>
+            </button>
+          </li>
+        </ul>
+
       </li>
     </ol>
     <div class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#anadir-formulario">
