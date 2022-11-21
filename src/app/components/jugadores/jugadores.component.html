@@ -16,26 +16,36 @@
   <div class="p-1">
     <ol class="list-group">
       <li
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"
+        class="d-flex justify-content-between align-items-start"
         *ngFor="let jugador of jugadoresList$ | async"
-        (click)="onSelect(jugador)"
-        [ngClass]="{'active': selectedJugador == jugador}"
-      >
-        <div class="ms-2 me-auto">
-          <div>
-            <span class="fw-bold">
-              {{jugador.nombre}}
-            </span>
-          </div>
-          Altura: {{jugador.altura}} | Posición: {{jugador.posicion}}
-        </div>
-        <div>
-          <span class="badge bg-primary rounded-pill jugador-id">{{jugador.id}}</span>
-          {{' '}}
-          <button (click)="onDelete(jugador)" type="button" class="btn btn-danger btn-sm">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
+        >
+
+        <ul class="list-group list-group-horizontal d-flex m-1">
+          <li
+            class="list-group-item d-flex flex-grow-1"
+            (click)="onSelect(jugador)"
+            [ngClass]="{'active': selectedJugador == jugador}"
+          >
+            <div class="ms-2 me-auto">
+              <div>
+                <span class="fw-bold">
+                  {{jugador.nombre}}
+                </span>
+              </div>
+              <i class="bi bi-ladder"></i> {{jugador.altura}} | <i class="bi bi-arrow-down-right-square"></i> {{jugador.posicion}}
+            </div>
+            <div>
+              <span class="badge bg-secondary rounded-pill jugador-id">{{jugador.id}}</span>
+              {{' '}}
+            </div>
+          </li>
+          <li class="list-group-item">
+            <button (click)="onDelete(jugador)" type="button" class="btn btn-danger btn-sm">
+              <i class="bi bi-trash"></i>
+            </button>
+          </li>
+        </ul>
+
       </li>
     </ol>
     <div class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#anadir-formulario">
@@ -60,49 +70,50 @@
           <div class="d-flex">
             <div class="m-2">
               <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input formControlName="nombre" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+                <label for="nombre" class="form-label">Nombre *</label>
+                <input required formControlName="nombre" type="text" class="form-control" id="nombre" >
               </div>
               <div class="mb-3">
-                <label for="edad" class="form-label">Edad</label>
-                <input formControlName="edad" type="number" class="form-control" id="edad" aria-describedby="emailHelp">
+                <label for="edad" class="form-label">Edad *</label>
+                <input required formControlName="edad" type="number" class="form-control" id="edad" >
               </div>
               <div class="mb-3">
-                <label for="altura" class="form-label">Altura</label>
-                <input formControlName="altura" type="number" class="form-control" id="altura" aria-describedby="emailHelp">
+                <label for="altura" class="form-label">Altura *</label>
+                <input required formControlName="altura" type="number" class="form-control" id="altura" >
               </div>
             </div>
             <div class="m-2">
               <div class="mb-3">
-                <label for="puntos" class="form-label">Puntos</label>
-                <input formControlName="puntos" type="number" class="form-control" id="puntos" aria-describedby="emailHelp">
+                <label for="puntos" class="form-label">Puntos *</label>
+                <input required formControlName="puntos" type="number" class="form-control" id="puntos" >
               </div>
               <div class="mb-3">
-                <label for="posicion" class="form-label">Posicion</label>
-                <input formControlName="posicion" type="text" class="form-control" id="posicion" aria-describedby="emailHelp">
+                <label for="posicion" class="form-label">Posicion *</label>
+                <input required formControlName="posicion" type="text" class="form-control" id="posicion" >
               </div>
             </div>
           </div>
           <div class="mb-3">
             <label for="audio" class="form-label">Audio url</label>
-            <input formControlName="audio" type="text" class="form-control" id="audio" aria-describedby="emailHelp">
+            <input formControlName="audio" type="text" class="form-control" id="audio" >
           </div>
           <div class="mb-3">
             <label for="video" class="form-label">Video url</label>
-            <input formControlName="video" type="text" class="form-control" id="audio" aria-describedby="emailHelp">
+            <input formControlName="video" type="text" class="form-control" id="audio" >
           </div>
           <div class="mb-3">
             <label for="img" class="form-label">Imagen url</label>
-            <input formControlName="img" type="text" class="form-control" id="img" aria-describedby="emailHelp">
+            <input formControlName="img" type="text" class="form-control" id="img" >
           </div>
           <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <textarea formControlName="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
+            <label for="descripcion" class="form-label">Descripción *</label>
+            <textarea required formControlName="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
           </div>
 
           <button
             type="submit"
             class="btn btn-primary"
+            [disabled]="!newJugadorForm.valid"
           >
             Guardar
           </button>

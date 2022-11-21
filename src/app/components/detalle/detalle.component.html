@@ -74,7 +74,7 @@
             <div class="m-2">
               <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input formControlName="nombre" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+                <input required formControlName="nombre" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
               </div>
               <div class="mb-3">
                 <label for="edad" class="form-label">Edad</label>
@@ -116,6 +116,7 @@
           <button
             type="submit"
             class="btn btn-primary"
+            [disabled]="!newJugadorForm.valid"
           >
             Guardar
           </button>
