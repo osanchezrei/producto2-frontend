@@ -1,15 +1,4 @@
-export class Jugador {
-  id!: number;
-  imagenUrl?: string;
-  nombre!: string;
-  altura!: number;
-  edad!: number;
-  puntos!: number;
-  posicion!: string;
-  descripcion!: string;
-  audio?: string;
-  video?: string;
-}
+import { Jugador } from "src/app/interfaces/Jugador";
 
 export const JUGADORES: Jugador[] = [
   {
