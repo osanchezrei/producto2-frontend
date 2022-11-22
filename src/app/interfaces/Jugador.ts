@@ -6,7 +6,6 @@ export interface Jugador {
     edad?: number;
     altura?: number;
     puntos?: number;
-    audio?: string;
-    video?: string;
+    media?: string;
     img?: string;
 }
