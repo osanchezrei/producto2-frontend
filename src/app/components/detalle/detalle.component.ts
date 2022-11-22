@@ -19,17 +19,14 @@ export class DetalleComponent implements OnInit{
     edad: 0,
     altura: 0,
     puntos: 0,
-    audio: '',
-    video: '',
+    media: '',
     img: ''
   });
 
   constructor(
     private readonly jugadoresService: JugadorService,
     private formBuilder: FormBuilder,
-  ){
-    console.log(this.jugador?.id)
-  }
+  ){}
 
   onSubmit(): void{
     this.jugadoresService.update(this.newJugadorForm.value, this.jugador!);
