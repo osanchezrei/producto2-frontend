@@ -13,7 +13,7 @@ import { FormBuilder } from '@angular/forms';
 
 export class JugadoresComponent implements OnInit{
   playerFilter = '';
-  selectedJugador!: Jugador;
+  selectedJugador!: Jugador | undefined;
   jugadoresList$?: Observable<any[]>;
 
   newJugadorForm = this.formBuilder.nonNullable.group({
@@ -23,8 +23,7 @@ export class JugadoresComponent implements OnInit{
     edad: 0,
     altura: 0,
     puntos: 0,
-    audio: '',
-    video: '',
+    media: '',
     img: ''
   });
 
@@ -38,6 +37,7 @@ export class JugadoresComponent implements OnInit{
   }
   onDelete(jugador: Jugador){
     this.jugadoresService.delete(jugador.id);
+    this.selectedJugador = undefined
   }
   onSubmit(): void{
     this.jugadoresService.add(this.newJugadorForm.value);
