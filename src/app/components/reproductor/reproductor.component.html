@@ -1,16 +1,30 @@
-<div>
-  <b *ngIf="audio">
-    Audio source: {{audio}}
-  </b>
+<div
+  *ngIf="isAudio()"
+>
+  <div>
+    <b>
+      Audio source: {{media}}
+    </b>
+  </div>
+  <audio
+    #audioElement
+    src={{media}}
+  ></audio>
 </div>
-<audio *ngIf="audio" #audioElement src={{audio}}></audio>
 
-<div>
-  <b *ngIf="video">
-    Video source: {{audio}}
-  </b>
+<div
+  *ngIf="isVideo()"
+>
+  <div>
+    <b>
+      Video source: {{media}}
+    </b>
+  </div>
+  <video
+    #videoElement
+    src={{media}}
+  ></video>
 </div>
-<video *ngIf="video" #videoElement src={{video}}></video>
 
 <div>
   <button type="button" class="btn btn-light" (click)="play()">

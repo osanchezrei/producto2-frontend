@@ -9,8 +9,15 @@ export class ReproductorComponent {
   @ViewChild('audioElement') audioElement?: ElementRef<HTMLAudioElement>;
   @ViewChild('videoElement') videoElement?: ElementRef<HTMLVideoElement>;
 
-  @Input() audio?: string;
-  @Input() video?: string;
+  @Input() media?: string;
+
+  isAudio() {
+    return this.media?.match(/\.(mp3|ogg|wav)$/i)
+  }
+
+  isVideo() {
+    return this.media?.match(/\.(mp4|webm|ogg|ogv|avi|wmv|mov|flv|mpeg|mpg|mkv)$/i)
+  }
 
   play() {
     this.audioElement?.nativeElement?.play()
