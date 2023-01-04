@@ -10,7 +10,8 @@ export const environment = {
     projectId: "frontend-e257b",
     storageBucket: "frontend-e257b.appspot.com",
     messagingSenderId: "943284013949",
-    appId: "1:943284013949:web:54881d713a4697be3c5a14"
+    appId: "1:943284013949:web:54881d713a4697be3c5a14",
+    vapidKey: "BD0BMmfFw5ko-gIi7eimFXImFdbszeAxW2Nxj6Y7X7yDFyKtuqKoC5CymALsUxYu_USk-GcHR-CIfKh53KoL45U"
   }
 };
 
